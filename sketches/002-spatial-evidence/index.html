@@ -1,0 +1,1805 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Justin Chong builds complex AI and data-intensive products and leads the teams that bring them to life.">
+  <title>Justin Chong — Technical leadership and product engineering</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f2ec;
+      --paper-deep: #e9e6de;
+      --ink: #181917;
+      --muted: #62645f;
+      --line: #cbc9c1;
+      --line-strong: #96978f;
+      --night: #1b1d1d;
+      --night-soft: #242727;
+      --acid: #d6f04c;
+      --blue: #3867d6;
+      --orange: #e66f3d;
+      --violet: #7857b8;
+      --cyan: #59b7b2;
+      --shadow: 0 24px 80px rgba(27, 29, 29, 0.12);
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.22em;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.75rem 1rem;
+      transform: translateY(-150%);
+      background: var(--ink);
+      color: white;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .variant-label {
+      position: fixed;
+      z-index: 20;
+      right: 0;
+      bottom: 1.25rem;
+      padding: 0.46rem 0.7rem;
+      border: 1px solid var(--ink);
+      border-right: 0;
+      background: rgba(244, 242, 236, 0.94);
+      font: 700 0.64rem/1 var(--mono);
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      backdrop-filter: blur(8px);
+    }
+
+    .shell {
+      width: min(100% - 3rem, 1240px);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 82px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .identity {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .identity-mark {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 12px 0 0 var(--orange), 24px 0 0 var(--violet);
+      margin-right: 24px;
+    }
+
+    .site-nav ul {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.15rem, 1.5vw, 1.4rem);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      padding: 0.35rem 0.55rem;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 650;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      background: var(--paper-deep);
+    }
+
+    .eyebrow {
+      margin: 0 0 1.1rem;
+      color: var(--muted);
+      font: 700 0.7rem/1.3 var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(290px, 0.78fr) minmax(480px, 1.22fr);
+      gap: clamp(2rem, 5vw, 5.5rem);
+      align-items: center;
+      min-height: min(800px, calc(100vh - 82px));
+      padding-block: clamp(3.5rem, 7vw, 7rem);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 670px;
+      margin-bottom: 1.5rem;
+      font-size: clamp(2.85rem, 5.25vw, 5.3rem);
+      font-weight: 620;
+      line-height: 0.98;
+      letter-spacing: -0.058em;
+    }
+
+    .hero-lede {
+      max-width: 560px;
+      margin-bottom: 2rem;
+      color: #4c4e4a;
+      font-size: clamp(1.03rem, 1.35vw, 1.2rem);
+      line-height: 1.6;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.75rem 1.15rem;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 750;
+      transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .button::after {
+      content: "↗";
+      font-size: 1rem;
+    }
+
+    .button-primary {
+      background: var(--ink);
+      color: white;
+    }
+
+    .button-secondary {
+      background: transparent;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .button-secondary:hover {
+      background: var(--paper-deep);
+    }
+
+    .field-figure {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid #393c3b;
+      background: var(--night);
+      color: #f1f1eb;
+      box-shadow: var(--shadow);
+    }
+
+    .field-topbar {
+      display: flex;
+      min-height: 56px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.6rem 0.75rem 0.6rem 1rem;
+      border-bottom: 1px solid #3c4040;
+    }
+
+    .field-title {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font: 650 0.72rem/1.3 var(--mono);
+      letter-spacing: 0.04em;
+    }
+
+    .field-title::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--acid);
+    }
+
+    .field-controls {
+      display: flex;
+      gap: 0.3rem;
+      padding: 0;
+      border: 0;
+    }
+
+    .field-controls legend {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .mode-button {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.5rem 0.65rem;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #c9ccca;
+      cursor: pointer;
+      font: 650 0.65rem/1 var(--mono);
+      letter-spacing: 0.02em;
+    }
+
+    .mode-button:hover,
+    .mode-button:focus-visible {
+      border-color: #737776;
+      color: white;
+    }
+
+    .mode-button[aria-pressed="true"] {
+      border-color: var(--acid);
+      background: var(--acid);
+      color: var(--night);
+    }
+
+    .plot-wrap {
+      position: relative;
+      aspect-ratio: 760 / 590;
+      min-height: 370px;
+      overflow: hidden;
+    }
+
+    .plot-wrap svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .plot-grid line,
+    .axis {
+      stroke: #373a3a;
+      stroke-width: 1;
+    }
+
+    .axis-label,
+    .cluster-label {
+      fill: #808583;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    .cluster-label {
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .cluster-boundary {
+      fill: none;
+      stroke: #5c6160;
+      stroke-width: 1;
+      stroke-dasharray: 4 7;
+      opacity: 0.72;
+    }
+
+    .centroid {
+      fill: none;
+      stroke: #9b9f9d;
+      stroke-width: 1;
+      opacity: 0.55;
+    }
+
+    .point {
+      stroke: rgba(255, 255, 255, 0.55);
+      stroke-width: 1;
+      cursor: crosshair;
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: fill 240ms ease, opacity 240ms ease, r 160ms ease, stroke 160ms ease;
+    }
+
+    .point-hit {
+      fill: transparent;
+      cursor: crosshair;
+      pointer-events: all;
+    }
+
+    [data-mode="class"] .point[data-class="avian"] { fill: var(--blue); }
+    [data-mode="class"] .point[data-class="mammal"] { fill: var(--orange); }
+    [data-mode="class"] .point[data-class="marine"] { fill: var(--violet); }
+
+    [data-mode="confidence"] .point[data-confidence="high"] { fill: var(--acid); }
+    [data-mode="confidence"] .point[data-confidence="medium"] { fill: #e9a34f; }
+    [data-mode="confidence"] .point[data-confidence="low"] { fill: #db5d60; }
+
+    [data-mode="cohort"] .point { fill: #777c7a; opacity: 0.48; }
+    [data-mode="cohort"] .point[data-cohort="boundary"] { fill: var(--cyan); opacity: 1; }
+    [data-mode="cohort"] .point[data-cohort="outlier"] { fill: #ffec77; opacity: 1; }
+
+    .point:hover,
+    .point:focus,
+    .point.is-hovered,
+    .point.is-selected {
+      r: 10;
+      stroke: white;
+      stroke-width: 3;
+      opacity: 1;
+    }
+
+    .point:focus {
+      outline: none;
+    }
+
+    .point.is-selected {
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.45));
+    }
+
+    .field-readout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      min-height: 86px;
+      border-top: 1px solid #3c4040;
+    }
+
+    .sample-readout,
+    .field-help {
+      padding: 0.8rem 1rem;
+    }
+
+    .sample-readout {
+      border-right: 1px solid #3c4040;
+      font: 0.72rem/1.6 var(--mono);
+    }
+
+    .sample-readout strong {
+      display: block;
+      color: var(--acid);
+      font-weight: 650;
+    }
+
+    .sample-readout span {
+      color: #b8bcba;
+    }
+
+    .field-help {
+      color: #aeb2b0;
+      font: 0.62rem/1.55 var(--mono);
+    }
+
+    .field-figure figcaption {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-top: 1px solid #3c4040;
+      color: #aeb2b0;
+      font: 0.65rem/1.45 var(--mono);
+    }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: 0.85fr repeat(4, 1fr);
+      margin-bottom: clamp(5rem, 10vw, 9rem);
+      border-block: 1px solid var(--line-strong);
+    }
+
+    .proof-intro,
+    .proof-item {
+      min-height: 132px;
+      padding: 1.25rem 1rem;
+      border-right: 1px solid var(--line);
+    }
+
+    .proof-item:last-child {
+      border-right: 0;
+    }
+
+    .proof-intro {
+      padding-left: 0;
+      font: 700 0.68rem/1.5 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .proof-item strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-size: 1.06rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .proof-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.45;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    .section-heading h2 {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      font-weight: 580;
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    .section-heading p {
+      max-width: 360px;
+      margin: 0 0 0 auto;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-number {
+      color: var(--muted);
+      font: 0.7rem/1 var(--mono);
+      letter-spacing: 0.08em;
+    }
+
+    .metalynx {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(2rem, 7vw, 7rem);
+      padding-block: clamp(3rem, 6vw, 6rem);
+      border-top: 1px solid var(--ink);
+    }
+
+    .project-copy h3,
+    .kikan h3,
+    .aival h3 {
+      margin: 0.45rem 0 1.2rem;
+      font-size: clamp(2rem, 4vw, 3.75rem);
+      font-weight: 610;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .project-copy .lede,
+    .aival .lede {
+      max-width: 600px;
+      color: #474945;
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+
+    .text-link {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+      font-size: 0.84rem;
+      font-weight: 750;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+
+    .text-link::after {
+      content: "→";
+      transition: transform 160ms ease;
+    }
+
+    .text-link:hover::after,
+    .text-link:focus-visible::after {
+      transform: translateX(5px);
+    }
+
+    .pipeline {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+      counter-reset: pipeline;
+    }
+
+    .pipeline li {
+      display: grid;
+      grid-template-columns: 2rem 1fr auto;
+      gap: 1rem;
+      align-items: baseline;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      counter-increment: pipeline;
+    }
+
+    .pipeline li::before {
+      content: "0" counter(pipeline);
+      color: var(--muted);
+      font: 0.65rem/1 var(--mono);
+    }
+
+    .pipeline strong {
+      font-size: 0.91rem;
+    }
+
+    .pipeline span {
+      color: var(--muted);
+      font: 0.66rem/1.4 var(--mono);
+      text-align: right;
+    }
+
+    .qualification {
+      margin: 2rem 0 0;
+      padding-left: 1rem;
+      border-left: 2px solid var(--blue);
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+
+    .kikan {
+      margin-block: clamp(4rem, 8vw, 8rem);
+      padding: clamp(2rem, 5vw, 4.5rem);
+      background: var(--night);
+      color: #f2f1eb;
+    }
+
+    .kikan-header {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .kikan .project-number,
+    .kikan .eyebrow {
+      color: #9ea3a0;
+    }
+
+    .kikan-description {
+      max-width: 650px;
+      margin: 0.4rem 0 0 auto;
+      color: #c4c8c5;
+      font-size: 1.04rem;
+    }
+
+    .execution-map {
+      margin: 0;
+    }
+
+    .execution-stages {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: stages;
+    }
+
+    .execution-stages li {
+      position: relative;
+      min-height: 190px;
+      padding: 1rem 1rem 1.25rem;
+      border: 1px solid #454948;
+      border-right: 0;
+      counter-increment: stages;
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+    .execution-stages li:last-child {
+      border-right: 1px solid #454948;
+    }
+
+    .execution-stages li::before {
+      content: "0" counter(stages);
+      display: block;
+      margin-bottom: 3.8rem;
+      color: #8e9390;
+      font: 0.65rem/1 var(--mono);
+    }
+
+    .execution-stages li::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 2.8rem;
+      left: 1rem;
+      width: calc(100% - 1rem);
+      height: 1px;
+      background: #5d6260;
+    }
+
+    .execution-stages li:last-child::after {
+      width: calc(100% - 2rem);
+      background: var(--acid);
+    }
+
+    .execution-stages strong {
+      display: block;
+      margin-bottom: 0.55rem;
+      font-size: 0.84rem;
+      line-height: 1.3;
+    }
+
+    .execution-stages span {
+      display: block;
+      color: #989d9a;
+      font-size: 0.68rem;
+      line-height: 1.45;
+    }
+
+    .execution-stages li:hover {
+      background: var(--acid);
+      color: var(--night);
+    }
+
+    .execution-stages li:hover::before,
+    .execution-stages li:hover span {
+      color: #3e413f;
+    }
+
+    .execution-map figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 1.25rem;
+      color: #9ba09d;
+      font: 0.66rem/1.5 var(--mono);
+    }
+
+    .kikan-link {
+      color: var(--acid);
+    }
+
+    .aival {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: clamp(3rem, 8vw, 8rem);
+      padding-block: clamp(4rem, 8vw, 8rem);
+      border-block: 1px solid var(--ink);
+    }
+
+    .aival-evidence {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-content: start;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .evidence-line {
+      min-height: 150px;
+      padding: 1.25rem 1.25rem 1.25rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .evidence-line:nth-child(odd) {
+      border-right: 1px solid var(--line);
+    }
+
+    .evidence-line:nth-child(even) {
+      padding-left: 1.25rem;
+    }
+
+    .evidence-line strong {
+      display: block;
+      margin-bottom: 0.65rem;
+      font-size: 1.15rem;
+      line-height: 1.25;
+    }
+
+    .evidence-line span {
+      color: var(--muted);
+      font-size: 0.79rem;
+      line-height: 1.5;
+    }
+
+    .depth,
+    .lab,
+    .approach,
+    .about {
+      padding-block: clamp(5rem, 10vw, 9rem);
+    }
+
+    .compact-heading {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .compact-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .compact-heading p {
+      max-width: 570px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .story-list {
+      border-top: 1px solid var(--ink);
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr auto;
+      gap: 2rem;
+      align-items: start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .story h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .story p {
+      max-width: 640px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .story .metric {
+      font: 700 0.74rem/1.3 var(--mono);
+      white-space: nowrap;
+    }
+
+    .lab {
+      background: var(--paper-deep);
+    }
+
+    .lab .shell {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: clamp(3rem, 8vw, 8rem);
+    }
+
+    .lab-intro h2 {
+      margin-bottom: 1.25rem;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .lab-intro p {
+      max-width: 440px;
+      color: var(--muted);
+    }
+
+    .notebook {
+      margin: 0;
+      border-top: 1px solid var(--ink);
+    }
+
+    .notebook-row {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .notebook dt {
+      font: 0.68rem/1.5 var(--mono);
+      text-transform: uppercase;
+    }
+
+    .notebook dd {
+      margin: 0;
+    }
+
+    .notebook dd strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.98rem;
+    }
+
+    .notebook dd span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.79rem;
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--ink);
+    }
+
+    .principle {
+      min-height: 280px;
+      padding: 1.5rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .principle:nth-child(3n) {
+      border-right: 0;
+    }
+
+    .principle .project-number {
+      display: block;
+      margin-bottom: 5rem;
+    }
+
+    .principle h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.12rem;
+      line-height: 1.25;
+    }
+
+    .principle p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.79rem;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: clamp(3rem, 8vw, 8rem);
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .about h2 {
+      margin-bottom: 1rem;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .about-copy {
+      max-width: 700px;
+    }
+
+    .about-copy p:first-child {
+      color: #3f413e;
+      font-size: 1.13rem;
+      line-height: 1.65;
+    }
+
+    .about-copy p:last-of-type {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .closing {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      background: var(--blue);
+      color: white;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    .closing h2 {
+      max-width: 850px;
+      margin-bottom: 1rem;
+      font-size: clamp(2.8rem, 6.5vw, 6.2rem);
+      font-weight: 600;
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+    }
+
+    .closing p {
+      max-width: 620px;
+      margin-bottom: 2rem;
+      color: #e6ebff;
+    }
+
+    .closing .button-primary {
+      border-color: white;
+      background: white;
+      color: var(--blue);
+    }
+
+    .closing .button-primary:hover {
+      border-color: var(--acid);
+      background: var(--acid);
+      color: var(--ink);
+    }
+
+    .contact-links {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.55);
+      list-style: none;
+    }
+
+    .contact-links a {
+      display: flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 700;
+    }
+
+    .contact-links a::after {
+      content: "↗";
+    }
+
+    .contact-links a:hover,
+    .contact-links a:focus-visible {
+      padding-inline: 0.6rem;
+      background: white;
+      color: var(--blue);
+    }
+
+    .site-footer {
+      display: flex;
+      min-height: 100px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      color: var(--muted);
+      font: 0.68rem/1.5 var(--mono);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+      }
+
+      .field-figure {
+        width: min(100%, 760px);
+        margin-left: auto;
+      }
+
+      .proof-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .proof-intro {
+        grid-column: 1 / -1;
+        min-height: auto;
+        border-right: 0;
+      }
+
+      .proof-item:nth-child(odd) {
+        border-right: 0;
+      }
+
+      .metalynx,
+      .kikan-header,
+      .aival,
+      .lab .shell,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .kikan-description {
+        margin-left: 0;
+      }
+
+      .execution-stages {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .execution-stages li:nth-child(3) {
+        border-right: 1px solid #454948;
+      }
+
+      .execution-stages li:nth-child(n + 4) {
+        border-top: 0;
+      }
+
+      .compact-heading,
+      .lab .shell {
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      body {
+        font-size: 16px;
+      }
+
+      .shell {
+        width: min(100% - 2rem, 1240px);
+      }
+
+      .site-header {
+        display: block;
+        padding-block: 0.5rem;
+      }
+
+      .identity {
+        min-height: 38px;
+      }
+
+      .site-nav {
+        margin-inline: -0.45rem;
+      }
+
+      .site-nav ul {
+        justify-content: space-between;
+        gap: 0;
+      }
+
+      .site-nav a {
+        padding-inline: 0.45rem;
+        font-size: 0.73rem;
+      }
+
+      .hero {
+        gap: 3rem;
+        padding-top: 3.5rem;
+      }
+
+      h1 {
+        font-size: clamp(2.65rem, 13vw, 4rem);
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .field-topbar {
+        display: block;
+        padding: 0.85rem;
+      }
+
+      .field-title {
+        margin-bottom: 0.65rem;
+      }
+
+      .field-controls {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .mode-button {
+        padding-inline: 0.35rem;
+      }
+
+      .plot-wrap {
+        aspect-ratio: 1 / 0.9;
+        min-height: 310px;
+      }
+
+      .plot-wrap svg {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .field-readout {
+        grid-template-columns: 1fr;
+      }
+
+      .sample-readout {
+        min-height: 78px;
+        border-right: 0;
+        border-bottom: 1px solid #3c4040;
+      }
+
+      .field-figure figcaption {
+        color: #aeb2b0;
+      }
+
+      .proof-strip {
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+      }
+
+      .proof-intro,
+      .proof-item {
+        min-height: auto;
+        padding: 1rem 0;
+        border-right: 0;
+      }
+
+      .section-heading,
+      .compact-heading,
+      .story,
+      .closing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        gap: 1.25rem;
+      }
+
+      .section-heading p {
+        margin-left: 0;
+      }
+
+      .metalynx,
+      .aival,
+      .about {
+        gap: 2.5rem;
+      }
+
+      .pipeline li {
+        grid-template-columns: 1.7rem 1fr;
+      }
+
+      .pipeline span {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .kikan {
+        margin-inline: -1rem;
+        padding-inline: 1rem;
+      }
+
+      .kikan-header {
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .execution-stages {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .execution-stages li,
+      .execution-stages li:nth-child(3) {
+        min-height: 155px;
+        border-right: 0;
+        border-top: 0;
+      }
+
+      .execution-stages li:nth-child(-n + 2) {
+        border-top: 1px solid #454948;
+      }
+
+      .execution-stages li:nth-child(even) {
+        border-right: 1px solid #454948;
+      }
+
+      .execution-stages li::before {
+        margin-bottom: 2.5rem;
+      }
+
+      .execution-map figcaption {
+        display: block;
+      }
+
+      .execution-map figcaption span {
+        display: block;
+        margin-bottom: 0.55rem;
+      }
+
+      .aival-evidence {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence-line,
+      .evidence-line:nth-child(even) {
+        min-height: auto;
+        padding: 1.15rem 0;
+        border-right: 0;
+      }
+
+      .story {
+        grid-template-columns: 1fr auto;
+        gap: 0.55rem 1rem;
+      }
+
+      .story .metric {
+        grid-row: 1;
+        justify-self: end;
+      }
+
+      .story p {
+        grid-column: 1 / -1;
+      }
+
+      .notebook-row {
+        grid-template-columns: 6.5rem 1fr;
+      }
+
+      .approach-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .principle,
+      .principle:nth-child(3n) {
+        min-height: auto;
+        padding: 1.3rem 0;
+        border-right: 0;
+      }
+
+      .principle .project-number {
+        margin-bottom: 1.5rem;
+      }
+
+      .closing-grid {
+        gap: 3rem;
+      }
+
+      .site-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.4rem;
+      }
+
+      .variant-label {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .variant-label {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="variant-label" aria-label="Design variant">002 · Spatial Evidence</div>
+
+  <header class="shell site-header">
+    <a class="identity" href="#top" aria-label="Justin Chong, home">
+      <span class="identity-mark" aria-hidden="true"></span>
+      <span>Justin Chong</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#lab">AI Lab</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="/resume">Résumé</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="shell hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Technical leader · Product engineer · AI systems</p>
+        <h1 id="hero-title">I build complex products and lead the teams that bring them to life.</h1>
+        <p class="hero-lede">Hands-on architecture and product engineering, paired with the delivery discipline to operate data-intensive systems in production and regulated environments.</p>
+        <div class="actions">
+          <a class="button button-primary" href="/resume">View résumé</a>
+          <a class="button button-secondary" href="#work">Explore selected work</a>
+        </div>
+      </div>
+
+      <figure class="field-figure" id="model-field" data-mode="class" aria-labelledby="field-heading field-caption">
+        <div class="field-topbar">
+          <div class="field-title" id="field-heading">MODEL SPACE · 48 SAMPLES · PCA / 3D PROJECTION</div>
+          <fieldset class="field-controls" aria-label="Color points by">
+            <legend>Color points by</legend>
+            <button class="mode-button" type="button" data-mode-button="class" aria-pressed="true">Class</button>
+            <button class="mode-button" type="button" data-mode-button="confidence" aria-pressed="false">Confidence</button>
+            <button class="mode-button" type="button" data-mode-button="cohort" aria-pressed="false">Cohort</button>
+          </fieldset>
+        </div>
+        <div class="plot-wrap">
+          <svg viewBox="0 0 760 590" role="img" aria-labelledby="plot-title plot-description">
+            <title id="plot-title">Interactive model representation point field</title>
+            <desc id="plot-description">Forty-eight samples form three structured clusters with an overlap region and outliers. Use the color controls, then focus a point and use arrow keys to inspect nearby samples. Press Enter or Space to select a point.</desc>
+            <g class="plot-grid" aria-hidden="true">
+              <line x1="80" y1="90" x2="80" y2="510"></line><line x1="180" y1="90" x2="180" y2="510"></line>
+              <line x1="280" y1="90" x2="280" y2="510"></line><line x1="380" y1="90" x2="380" y2="510"></line>
+              <line x1="480" y1="90" x2="480" y2="510"></line><line x1="580" y1="90" x2="580" y2="510"></line>
+              <line x1="680" y1="90" x2="680" y2="510"></line>
+              <line x1="80" y1="110" x2="700" y2="110"></line><line x1="80" y1="210" x2="700" y2="210"></line>
+              <line x1="80" y1="310" x2="700" y2="310"></line><line x1="80" y1="410" x2="700" y2="410"></line>
+              <line x1="80" y1="510" x2="700" y2="510"></line>
+              <line class="axis" x1="80" y1="510" x2="708" y2="510"></line>
+              <line class="axis" x1="80" y1="518" x2="80" y2="82"></line>
+              <text class="axis-label" x="628" y="545">COMPONENT 01</text>
+              <text class="axis-label" x="34" y="153" transform="rotate(-90 34 153)">COMPONENT 02</text>
+            </g>
+            <g aria-hidden="true">
+              <ellipse class="cluster-boundary" cx="232" cy="353" rx="137" ry="90" transform="rotate(-17 232 353)"></ellipse>
+              <ellipse class="cluster-boundary" cx="452" cy="236" rx="151" ry="87" transform="rotate(13 452 236)"></ellipse>
+              <ellipse class="cluster-boundary" cx="537" cy="407" rx="113" ry="70" transform="rotate(-7 537 407)"></ellipse>
+              <text class="cluster-label" x="114" y="470">CLUSTER A / DENSE</text>
+              <text class="cluster-label" x="491" y="126">CLUSTER B / OVERLAP</text>
+              <text class="cluster-label" x="575" y="495">CLUSTER C</text>
+              <circle class="centroid" cx="232" cy="353" r="15"></circle><path class="centroid" d="M211 353h42M232 332v42"></path>
+              <circle class="centroid" cx="452" cy="236" r="15"></circle><path class="centroid" d="M431 236h42M452 215v42"></path>
+              <circle class="centroid" cx="537" cy="407" r="15"></circle><path class="centroid" d="M516 407h42M537 386v42"></path>
+            </g>
+            <g class="points" aria-label="Model samples">
+              <circle class="point" cx="142" cy="374" r="7" tabindex="0" role="button" data-id="S-001" data-class="avian" data-label="finch" data-score="0.94" data-confidence="high" data-cohort="core" aria-label="Sample S-001, finch, 94 percent confidence, core cohort"></circle>
+              <circle class="point" cx="159" cy="341" r="6" tabindex="-1" role="button" data-id="S-002" data-class="avian" data-label="finch" data-score="0.91" data-confidence="high" data-cohort="core" aria-label="Sample S-002, finch, 91 percent confidence, core cohort"></circle>
+              <circle class="point" cx="171" cy="397" r="8" tabindex="-1" role="button" data-id="S-003" data-class="avian" data-label="wren" data-score="0.88" data-confidence="high" data-cohort="core" aria-label="Sample S-003, wren, 88 percent confidence, core cohort"></circle>
+              <circle class="point" cx="185" cy="321" r="6" tabindex="-1" role="button" data-id="S-004" data-class="avian" data-label="finch" data-score="0.86" data-confidence="high" data-cohort="core" aria-label="Sample S-004, finch, 86 percent confidence, core cohort"></circle>
+              <circle class="point" cx="198" cy="368" r="7" tabindex="-1" role="button" data-id="S-005" data-class="avian" data-label="wren" data-score="0.93" data-confidence="high" data-cohort="core" aria-label="Sample S-005, wren, 93 percent confidence, core cohort"></circle>
+              <circle class="point" cx="207" cy="414" r="6" tabindex="-1" role="button" data-id="S-006" data-class="avian" data-label="finch" data-score="0.82" data-confidence="high" data-cohort="core" aria-label="Sample S-006, finch, 82 percent confidence, core cohort"></circle>
+              <circle class="point" cx="219" cy="337" r="8" tabindex="-1" role="button" data-id="S-007" data-class="avian" data-label="wren" data-score="0.90" data-confidence="high" data-cohort="core" aria-label="Sample S-007, wren, 90 percent confidence, core cohort"></circle>
+              <circle class="point" cx="229" cy="386" r="6" tabindex="-1" role="button" data-id="S-008" data-class="avian" data-label="finch" data-score="0.79" data-confidence="medium" data-cohort="core" aria-label="Sample S-008, finch, 79 percent confidence, core cohort"></circle>
+              <circle class="point" cx="243" cy="311" r="6" tabindex="-1" role="button" data-id="S-009" data-class="avian" data-label="wren" data-score="0.84" data-confidence="high" data-cohort="core" aria-label="Sample S-009, wren, 84 percent confidence, core cohort"></circle>
+              <circle class="point" cx="255" cy="356" r="8" tabindex="-1" role="button" data-id="S-010" data-class="avian" data-label="finch" data-score="0.95" data-confidence="high" data-cohort="core" aria-label="Sample S-010, finch, 95 percent confidence, core cohort"></circle>
+              <circle class="point" cx="269" cy="399" r="7" tabindex="-1" role="button" data-id="S-011" data-class="avian" data-label="wren" data-score="0.81" data-confidence="high" data-cohort="core" aria-label="Sample S-011, wren, 81 percent confidence, core cohort"></circle>
+              <circle class="point" cx="282" cy="334" r="6" tabindex="-1" role="button" data-id="S-012" data-class="avian" data-label="finch" data-score="0.76" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-012, finch, 76 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="298" cy="373" r="7" tabindex="-1" role="button" data-id="S-013" data-class="avian" data-label="wren" data-score="0.71" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-013, wren, 71 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="311" cy="306" r="6" tabindex="-1" role="button" data-id="S-014" data-class="avian" data-label="finch" data-score="0.67" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-014, finch, 67 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="333" cy="351" r="7" tabindex="-1" role="button" data-id="S-015" data-class="avian" data-label="wren" data-score="0.58" data-confidence="low" data-cohort="boundary" aria-label="Sample S-015, wren, 58 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="116" cy="436" r="6" tabindex="-1" role="button" data-id="S-016" data-class="avian" data-label="finch" data-score="0.89" data-confidence="high" data-cohort="core" aria-label="Sample S-016, finch, 89 percent confidence, core cohort"></circle>
+
+              <circle class="point" cx="338" cy="246" r="7" tabindex="-1" role="button" data-id="S-017" data-class="mammal" data-label="fox" data-score="0.61" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-017, fox, 61 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="357" cy="209" r="6" tabindex="-1" role="button" data-id="S-018" data-class="mammal" data-label="fox" data-score="0.74" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-018, fox, 74 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="375" cy="273" r="8" tabindex="-1" role="button" data-id="S-019" data-class="mammal" data-label="lynx" data-score="0.56" data-confidence="low" data-cohort="boundary" aria-label="Sample S-019, lynx, 56 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="389" cy="187" r="7" tabindex="-1" role="button" data-id="S-020" data-class="mammal" data-label="fox" data-score="0.83" data-confidence="high" data-cohort="core" aria-label="Sample S-020, fox, 83 percent confidence, core cohort"></circle>
+              <circle class="point" cx="406" cy="231" r="6" tabindex="-1" role="button" data-id="S-021" data-class="mammal" data-label="lynx" data-score="0.87" data-confidence="high" data-cohort="core" aria-label="Sample S-021, lynx, 87 percent confidence, core cohort"></circle>
+              <circle class="point" cx="422" cy="287" r="7" tabindex="-1" role="button" data-id="S-022" data-class="mammal" data-label="fox" data-score="0.66" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-022, fox, 66 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="436" cy="202" r="8" tabindex="-1" role="button" data-id="S-023" data-class="mammal" data-label="lynx" data-score="0.92" data-confidence="high" data-cohort="core" aria-label="Sample S-023, lynx, 92 percent confidence, core cohort"></circle>
+              <circle class="point" cx="454" cy="252" r="6" tabindex="-1" role="button" data-id="S-024" data-class="mammal" data-label="fox" data-score="0.90" data-confidence="high" data-cohort="core" aria-label="Sample S-024, fox, 90 percent confidence, core cohort"></circle>
+              <circle class="point" cx="468" cy="171" r="7" tabindex="-1" role="button" data-id="S-025" data-class="mammal" data-label="lynx" data-score="0.86" data-confidence="high" data-cohort="core" aria-label="Sample S-025, lynx, 86 percent confidence, core cohort"></circle>
+              <circle class="point" cx="483" cy="219" r="8" tabindex="-1" role="button" data-id="S-026" data-class="mammal" data-label="fox" data-score="0.94" data-confidence="high" data-cohort="core" aria-label="Sample S-026, fox, 94 percent confidence, core cohort"></circle>
+              <circle class="point" cx="499" cy="275" r="6" tabindex="-1" role="button" data-id="S-027" data-class="mammal" data-label="lynx" data-score="0.78" data-confidence="medium" data-cohort="core" aria-label="Sample S-027, lynx, 78 percent confidence, core cohort"></circle>
+              <circle class="point" cx="518" cy="194" r="7" tabindex="-1" role="button" data-id="S-028" data-class="mammal" data-label="fox" data-score="0.89" data-confidence="high" data-cohort="core" aria-label="Sample S-028, fox, 89 percent confidence, core cohort"></circle>
+              <circle class="point" cx="535" cy="242" r="6" tabindex="-1" role="button" data-id="S-029" data-class="mammal" data-label="lynx" data-score="0.82" data-confidence="high" data-cohort="core" aria-label="Sample S-029, lynx, 82 percent confidence, core cohort"></circle>
+              <circle class="point" cx="556" cy="291" r="8" tabindex="-1" role="button" data-id="S-030" data-class="mammal" data-label="fox" data-score="0.64" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-030, fox, 64 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="578" cy="211" r="6" tabindex="-1" role="button" data-id="S-031" data-class="mammal" data-label="lynx" data-score="0.81" data-confidence="high" data-cohort="core" aria-label="Sample S-031, lynx, 81 percent confidence, core cohort"></circle>
+              <circle class="point" cx="615" cy="152" r="7" tabindex="-1" role="button" data-id="S-032" data-class="mammal" data-label="fox" data-score="0.48" data-confidence="low" data-cohort="outlier" aria-label="Sample S-032, fox, 48 percent confidence, outlier cohort"></circle>
+
+              <circle class="point" cx="414" cy="374" r="7" tabindex="-1" role="button" data-id="S-033" data-class="marine" data-label="ray" data-score="0.53" data-confidence="low" data-cohort="boundary" aria-label="Sample S-033, ray, 53 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="442" cy="402" r="6" tabindex="-1" role="button" data-id="S-034" data-class="marine" data-label="ray" data-score="0.68" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-034, ray, 68 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="462" cy="354" r="8" tabindex="-1" role="button" data-id="S-035" data-class="marine" data-label="shark" data-score="0.72" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-035, shark, 72 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="477" cy="431" r="7" tabindex="-1" role="button" data-id="S-036" data-class="marine" data-label="ray" data-score="0.84" data-confidence="high" data-cohort="core" aria-label="Sample S-036, ray, 84 percent confidence, core cohort"></circle>
+              <circle class="point" cx="493" cy="388" r="6" tabindex="-1" role="button" data-id="S-037" data-class="marine" data-label="shark" data-score="0.91" data-confidence="high" data-cohort="core" aria-label="Sample S-037, shark, 91 percent confidence, core cohort"></circle>
+              <circle class="point" cx="512" cy="450" r="8" tabindex="-1" role="button" data-id="S-038" data-class="marine" data-label="ray" data-score="0.88" data-confidence="high" data-cohort="core" aria-label="Sample S-038, ray, 88 percent confidence, core cohort"></circle>
+              <circle class="point" cx="526" cy="365" r="7" tabindex="-1" role="button" data-id="S-039" data-class="marine" data-label="shark" data-score="0.93" data-confidence="high" data-cohort="core" aria-label="Sample S-039, shark, 93 percent confidence, core cohort"></circle>
+              <circle class="point" cx="543" cy="416" r="6" tabindex="-1" role="button" data-id="S-040" data-class="marine" data-label="ray" data-score="0.90" data-confidence="high" data-cohort="core" aria-label="Sample S-040, ray, 90 percent confidence, core cohort"></circle>
+              <circle class="point" cx="559" cy="376" r="8" tabindex="-1" role="button" data-id="S-041" data-class="marine" data-label="shark" data-score="0.86" data-confidence="high" data-cohort="core" aria-label="Sample S-041, shark, 86 percent confidence, core cohort"></circle>
+              <circle class="point" cx="578" cy="442" r="7" tabindex="-1" role="button" data-id="S-042" data-class="marine" data-label="ray" data-score="0.82" data-confidence="high" data-cohort="core" aria-label="Sample S-042, ray, 82 percent confidence, core cohort"></circle>
+              <circle class="point" cx="596" cy="395" r="6" tabindex="-1" role="button" data-id="S-043" data-class="marine" data-label="shark" data-score="0.79" data-confidence="medium" data-cohort="core" aria-label="Sample S-043, shark, 79 percent confidence, core cohort"></circle>
+              <circle class="point" cx="614" cy="431" r="8" tabindex="-1" role="button" data-id="S-044" data-class="marine" data-label="ray" data-score="0.87" data-confidence="high" data-cohort="core" aria-label="Sample S-044, ray, 87 percent confidence, core cohort"></circle>
+              <circle class="point" cx="632" cy="369" r="7" tabindex="-1" role="button" data-id="S-045" data-class="marine" data-label="shark" data-score="0.74" data-confidence="medium" data-cohort="boundary" aria-label="Sample S-045, shark, 74 percent confidence, boundary cohort"></circle>
+              <circle class="point" cx="655" cy="416" r="6" tabindex="-1" role="button" data-id="S-046" data-class="marine" data-label="ray" data-score="0.80" data-confidence="high" data-cohort="core" aria-label="Sample S-046, ray, 80 percent confidence, core cohort"></circle>
+              <circle class="point" cx="675" cy="344" r="7" tabindex="-1" role="button" data-id="S-047" data-class="marine" data-label="shark" data-score="0.51" data-confidence="low" data-cohort="outlier" aria-label="Sample S-047, shark, 51 percent confidence, outlier cohort"></circle>
+              <circle class="point" cx="387" cy="459" r="7" tabindex="-1" role="button" data-id="S-048" data-class="marine" data-label="ray" data-score="0.46" data-confidence="low" data-cohort="outlier" aria-label="Sample S-048, ray, 46 percent confidence, outlier cohort"></circle>
+            </g>
+          </svg>
+        </div>
+        <div class="field-readout">
+          <div class="sample-readout" id="sample-readout" role="status" aria-live="polite">
+            <strong>INSPECT THE REPRESENTATION</strong>
+            <span>Focus, hover, or tap a sample to view its metadata.</span>
+          </div>
+          <div class="field-help">KEYS · Arrow keys move between nearby samples. Enter/Space adds or removes a sample from the selected cohort.</div>
+        </div>
+        <figcaption id="field-caption">Portfolio-specific interaction illustrating the Metalynx Scatter analysis workflow, not a historical product screenshot.</figcaption>
+      </figure>
+    </section>
+
+    <aside class="shell proof-strip" aria-label="Immediate evidence">
+      <div class="proof-intro">Selected signals<br>at a glance</div>
+      <div class="proof-item"><strong>Five-person function</strong><span>Engineering leadership and hands-on delivery</span></div>
+      <div class="proof-item"><strong>Cloud to on-premises</strong><span>Regulated clinical-AI product operations</span></div>
+      <div class="proof-item"><strong>End-to-end builder</strong><span>Metalynx Scatter designed and implemented in full</span></div>
+      <div class="proof-item"><strong>First Class MEng</strong><span>Computing with AI, Imperial College London</span></div>
+    </aside>
+
+    <section class="shell" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Selected work · 01—03</p>
+          <h2 id="work-title">Evidence at product, system, and team scale.</h2>
+        </div>
+        <p>Three different kinds of work, shown in the form that best explains the decisions behind each one.</p>
+      </div>
+
+      <article class="metalynx" aria-labelledby="metalynx-title">
+        <div class="project-copy">
+          <span class="project-number">01 / PRODUCT + VISUAL COMPUTING</span>
+          <h3 id="metalynx-title">Metalynx<br>Scatter</h3>
+          <p class="lede">An interactive way for AI developers to interrogate learned representations, find overlap and outliers, and move from a spatial pattern to the samples behind it.</p>
+          <p>Designed and implemented as a complete product: numerical processing, OpenGL visualization, filtering, interaction design, and export.</p>
+          <a class="text-link" href="/work/metalynx-scatter">Read the full case study</a>
+        </div>
+        <div>
+          <p class="eyebrow">Analysis path</p>
+          <ol class="pipeline" aria-label="Metalynx Scatter analysis workflow">
+            <li><strong>Import model outputs</strong><span>LOGITS + METADATA / CSV</span></li>
+            <li><strong>Reduce the representation</strong><span>PCA / THREE DIMENSIONS</span></li>
+            <li><strong>Map structure and separation</strong><span>OPENGL POINT CLOUD</span></li>
+            <li><strong>Inspect spatial cohorts</strong><span>HOVER + SELECT + FILTER</span></li>
+            <li><strong>Curate samples for analysis</strong><span>GALLERY + CSV EXPORT</span></li>
+          </ol>
+          <p class="qualification">Tested with and refined through feedback from individual AI researchers, including researchers affiliated with NASA, Waymo, and Mastercard. These were individual researchers, not organizational customers, partners, adopters, or endorsements.</p>
+        </div>
+      </article>
+
+      <article class="kikan" aria-labelledby="kikan-title">
+        <div class="kikan-header">
+          <div>
+            <span class="project-number">02 / AUTONOMOUS ENGINEERING</span>
+            <h3 id="kikan-title">Kikan</h3>
+          </div>
+          <div>
+            <p class="kikan-description">An opinionated autonomous engineering harness that turns a one-line feature idea into a researched, designed, planned, implemented, and tested change, with minimal technical supervision.</p>
+            <a class="text-link kikan-link" href="/work/kikan">Examine the architecture</a>
+          </div>
+        </div>
+        <figure class="execution-map">
+          <ol class="execution-stages">
+            <li><strong>Expand intent</strong><span>Resolve the idea into a bounded brief</span></li>
+            <li><strong>Discover context</strong><span>Map repository and constraints</span></li>
+            <li><strong>Research + design</strong><span>Explore and validate an approach</span></li>
+            <li><strong>Plan</strong><span>Produce an executable change sequence</span></li>
+            <li><strong>Implement + test</strong><span>Work in isolation with review gates</span></li>
+            <li><strong>Deliver evidence</strong><span>Recover, iterate, and report results</span></li>
+          </ol>
+          <figcaption>
+            <span>EARLY-STAGE DOGFOODING · Kikan extends Kikan through its own workflow.</span>
+            <span>Current evidence, not a claim of proven production autonomy.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <article class="aival" aria-labelledby="aival-title">
+        <div>
+          <span class="project-number">03 / LEADERSHIP + REGULATED DELIVERY</span>
+          <h3 id="aival-title">Aival</h3>
+          <p class="lede">Product and platform ownership in a clinical-AI environment where architecture, delivery, regulation, and production support could not be separated.</p>
+          <a class="text-link" href="/work/aival">Read the leadership story</a>
+        </div>
+        <div class="aival-evidence" aria-label="Aival leadership evidence">
+          <div class="evidence-line"><strong>Led a five-person engineering function</strong><span>Turning product, client, and regulatory needs into roadmaps and releases.</span></div>
+          <div class="evidence-line"><strong>Owned the delivery arc</strong><span>Architecture through production support for data-intensive validation and monitoring products.</span></div>
+          <div class="evidence-line"><strong>Designed for real environments</strong><span>Cloud, Linux VM, and physical on-premises deployments.</span></div>
+          <div class="evidence-line"><strong>Worked within constraints</strong><span>ISO 27001, GDPR, DTAC, and HIPAA shaped engineering and operating decisions.</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="shell depth" aria-labelledby="depth-title">
+      <div class="compact-heading">
+        <div>
+          <p class="eyebrow">Engineering depth</p>
+          <h2 id="depth-title">Range, with receipts.</h2>
+        </div>
+        <p>Compact technical stories from systems where robustness, performance, and operating context mattered.</p>
+      </div>
+      <div class="story-list">
+        <article class="story">
+          <h3>Netcraft</h3>
+          <p>Profiled and reworked an autonomous phishing classifier to reduce memory use while improving handling of overlays, OCR content, dynamic HTML, and browser-rendered attacks.</p>
+          <span class="metric">13× / 7× MEMORY REDUCTIONS</span>
+        </article>
+        <article class="story">
+          <h3>Emotech</h3>
+          <p>Built Java and Spring Boot REST/OAuth services plus NLP and video-recognition product features, supporting multi-region operations and trial launches exceeding 20,000 users.</p>
+          <span class="metric">MULTI-REGION OPERATIONS</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="lab" id="lab" aria-labelledby="lab-title">
+      <div class="shell">
+        <div class="lab-intro">
+          <p class="eyebrow">AI Lab · Work in progress</p>
+          <h2 id="lab-title">The active edge.</h2>
+          <p>A living notebook for agent systems, model workflows, and infrastructure experiments. Explicitly experiments, not polished product claims.</p>
+          <a class="text-link" href="/lab">Open the lab notebook</a>
+        </div>
+        <dl class="notebook">
+          <div class="notebook-row">
+            <dt>Agents</dt>
+            <dd><strong>Hermes assistant environment</strong><span>Testing tool use, memory, and sustained task execution.</span></dd>
+          </div>
+          <div class="notebook-row">
+            <dt>Automation</dt>
+            <dd><strong>Scheduled and event-driven workflows</strong><span>Reducing repeated coordination and implementation overhead.</span></dd>
+          </div>
+          <div class="notebook-row">
+            <dt>Models</dt>
+            <dd><strong>Local and hybrid model workflows</strong><span>Exploring practical boundaries across capability, latency, and control.</span></dd>
+          </div>
+          <div class="notebook-row">
+            <dt>Infra</dt>
+            <dd><strong>Homelab services</strong><span>Operating the environment behind ongoing systems experiments.</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="shell approach" aria-labelledby="approach-title">
+      <div class="compact-heading">
+        <div>
+          <p class="eyebrow">Operating approach</p>
+          <h2 id="approach-title">How I move work forward.</h2>
+        </div>
+        <p>Technical leadership grounded in the delivery evidence above, not detached management principles.</p>
+      </div>
+      <div class="approach-grid">
+        <article class="principle">
+          <span class="project-number">01 / FRAME</span>
+          <h3>Turn ambiguity into an executable system.</h3>
+          <p>Kikan formalizes this into discovery, design, planning, implementation, and review.</p>
+        </article>
+        <article class="principle">
+          <span class="project-number">02 / BUILD</span>
+          <h3>Keep architecture connected to implementation.</h3>
+          <p>Metalynx spans product design, numerical processing, interaction, and export as one coherent workflow.</p>
+        </article>
+        <article class="principle">
+          <span class="project-number">03 / OPERATE</span>
+          <h3>Design for where software must actually run.</h3>
+          <p>Aival required delivery across cloud and on-premises environments within high-trust constraints.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell about" id="about" aria-labelledby="about-title">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Builder first.<br>Leader by practice.</h2>
+      </div>
+      <div class="about-copy">
+        <p>I studied Computing with Artificial Intelligence at Imperial College London, then progressed through security engineering at Netcraft, product engineering at Emotech, and product and team leadership at Aival.</p>
+        <p>Today, my independent work focuses on autonomous engineering systems, practical agent workflows, and tools that make complex model behavior easier to interrogate.</p>
+        <a class="text-link" href="/about">Read the full background</a>
+      </div>
+    </section>
+
+    <section class="closing" id="contact" aria-labelledby="closing-title">
+      <div class="shell closing-grid">
+        <div>
+          <p class="eyebrow" style="color:#e6ebff">Next conversation</p>
+          <h2 id="closing-title">Looking for a builder who can lead?</h2>
+          <p>I’m interested in Technical Lead, Staff/Principal, platform, data, and AI-product engineering roles.</p>
+          <a class="button button-primary" href="/resume">View résumé</a>
+        </div>
+        <ul class="contact-links" aria-label="Professional links">
+          <li><a href="/contact">Email Justin</a></li>
+          <li><a href="/about#linkedin">LinkedIn</a></li>
+          <li><a href="https://github.com/justincqz" rel="me">GitHub</a></li>
+          <li><a href="/about#scholar">Google Scholar</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell site-footer">
+    <span>Justin Chong · Technical leadership + product engineering</span>
+    <span>Spatial Evidence / Concept 002</span>
+  </footer>
+
+  <noscript>
+    <p style="padding:1rem;margin:0;background:#fff3b0;color:#181917;text-align:center">The model-space visualization remains visible as a static class-colored representation. Enable JavaScript to inspect, recolor, and select samples.</p>
+  </noscript>
+
+  <script>
+    (() => {
+      const field = document.querySelector('#model-field');
+      if (!field) return;
+
+      const points = [...field.querySelectorAll('.point')];
+      const modeButtons = [...field.querySelectorAll('[data-mode-button]')];
+      const readout = field.querySelector('#sample-readout');
+      const selected = new Set();
+
+      const hitLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      hitLayer.setAttribute('aria-hidden', 'true');
+      hitLayer.classList.add('point-hit-layer');
+      const pointLayer = field.querySelector('.points');
+      pointLayer.parentNode.insertBefore(hitLayer, pointLayer);
+
+      const describePoint = (point, announceSelection = false) => {
+        const state = selected.has(point.dataset.id) ? 'Selected cohort' : 'Not selected';
+        readout.innerHTML = `<strong>${point.dataset.id} · ${point.dataset.label.toUpperCase()}</strong><span>Class ${point.dataset.class} · confidence ${point.dataset.score} · ${point.dataset.cohort} cohort${announceSelection ? ` · ${state}` : ''}</span>`;
+      };
+
+      const setRovingFocus = (point) => {
+        points.forEach((item) => item.setAttribute('tabindex', item === point ? '0' : '-1'));
+      };
+
+      const togglePoint = (point) => {
+        const id = point.dataset.id;
+        if (selected.has(id)) {
+          selected.delete(id);
+          point.classList.remove('is-selected');
+          point.setAttribute('aria-pressed', 'false');
+        } else {
+          selected.add(id);
+          point.classList.add('is-selected');
+          point.setAttribute('aria-pressed', 'true');
+        }
+        describePoint(point, true);
+      };
+
+      points.forEach((point) => {
+        point.setAttribute('aria-pressed', 'false');
+        point.addEventListener('pointerenter', () => {
+          point.classList.add('is-hovered');
+          describePoint(point);
+        });
+        point.addEventListener('pointerleave', () => point.classList.remove('is-hovered'));
+        point.addEventListener('click', () => togglePoint(point));
+        const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        hit.setAttribute('cx', point.getAttribute('cx'));
+        hit.setAttribute('cy', point.getAttribute('cy'));
+        hit.setAttribute('r', '30');
+        hit.classList.add('point-hit');
+        hit.addEventListener('pointerenter', () => {
+          point.classList.add('is-hovered');
+          describePoint(point);
+        });
+        hit.addEventListener('pointerleave', () => point.classList.remove('is-hovered'));
+        hit.addEventListener('click', () => togglePoint(point));
+        hitLayer.appendChild(hit);
+        point.addEventListener('focus', () => {
+          setRovingFocus(point);
+          describePoint(point);
+        });
+        point.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            togglePoint(point);
+            return;
+          }
+
+          const directions = {
+            ArrowLeft: [-1, 0],
+            ArrowRight: [1, 0],
+            ArrowUp: [0, -1],
+            ArrowDown: [0, 1]
+          };
+          if (!directions[event.key]) return;
+
+          event.preventDefault();
+          const [dx, dy] = directions[event.key];
+          const x = Number(point.getAttribute('cx'));
+          const y = Number(point.getAttribute('cy'));
+          let nearest = null;
+          let nearestScore = Infinity;
+
+          points.forEach((candidate) => {
+            if (candidate === point) return;
+            const offsetX = Number(candidate.getAttribute('cx')) - x;
+            const offsetY = Number(candidate.getAttribute('cy')) - y;
+            const directional = dx ? offsetX * dx > 0 : offsetY * dy > 0;
+            if (!directional) return;
+            const primary = Math.abs(dx ? offsetX : offsetY);
+            const secondary = Math.abs(dx ? offsetY : offsetX);
+            const score = primary + secondary * 1.8;
+            if (score < nearestScore) {
+              nearest = candidate;
+              nearestScore = score;
+            }
+          });
+
+          if (nearest) {
+            setRovingFocus(nearest);
+            nearest.focus();
+          }
+        });
+      });
+
+      modeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          field.dataset.mode = button.dataset.modeButton;
+          modeButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          readout.innerHTML = `<strong>COLOR MODE · ${button.textContent.toUpperCase()}</strong><span>Representation recolored by ${button.textContent.toLowerCase()}. Focus a sample to inspect it.</span>`;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

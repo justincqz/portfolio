@@ -1,0 +1,11 @@
+# Generated QA captures
+**/desktop-*.png
+**/tablet-*.png
+**/mobile-*.png
+**/mobile.png
+sketches/tablet-comparison.png
+
+# Local tooling
+.DS_Store
+node_modules/
+*.log
