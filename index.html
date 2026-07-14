@@ -1865,11 +1865,11 @@
               <path class="flow cross" d="M180 282H350Q380 282 420 315" marker-end="url(#arrow-blue)"></path>
               <path class="flow return" d="M240 425H350Q380 425 420 370" marker-end="url(#arrow-orange)"></path>
               <path class="flow cross" d="M610 320H700" marker-end="url(#arrow-blue)"></path>
-              <path class="flow return" d="M515 400V520Q515 570 565 570H900" marker-end="url(#arrow-orange)"></path>
-              <path class="flow cross" d="M860 242H890V137H920M890 242V242H920M890 242V347H920" marker-end="url(#arrow-blue)"></path>
+              <path class="flow return" d="M515 400V500Q515 550 565 550H900" marker-end="url(#arrow-orange)"></path>
+              <path class="flow cross" d="M860 322H890V137H920M860 322H890V242H920M860 322H890V347H920" marker-end="url(#arrow-blue)"></path>
               <path class="flow ai" d="M1140 137H1170V470Q1170 550 1150 550M1140 242H1170M1140 347H1170" marker-end="url(#arrow-green)"></path>
               <path class="flow web" d="M180 605H340Q380 605 420 385" marker-end="url(#arrow-yellow)"></path>
-              <path class="flow web" d="M610 385H650V625H900" marker-end="url(#arrow-yellow)"></path>
+              <path class="flow web" d="M610 385H650V590H900" marker-end="url(#arrow-yellow)"></path>
               <text class="flow-label" x="124" y="207">01 TRIGGER / READY</text>
               <text class="flow-label" x="270" y="272">02 PULL + DE-IDENTIFY</text>
               <text class="flow-label" x="260" y="416">03 SYNCHRONIZE</text>
@@ -1972,7 +1972,7 @@
         <p class="section-number">02 / Product portfolio</p>
         <div>
           <h2 id="portfolio-title">Products are systems you can use.</h2>
-          <p class="section-intro">One compact stage for three product modes. Scatter is a working conceptual interaction; Kikan is an early-stage working harness with interface evidence; Radiology Viewer remains a prototype direction.</p>
+          <p class="section-intro">One compact stage for two product modes. Scatter is a working conceptual interaction; Kikan is an early-stage working harness with interface evidence.</p>
         </div>
       </header>
 
@@ -1980,7 +1980,7 @@
         <ul class="portfolio-tabs" role="tablist" aria-label="Product portfolio">
           <li><button class="portfolio-tab" id="portfolio-tab-scatter" type="button" role="tab" aria-selected="true" aria-controls="portfolio-panel-scatter" tabindex="0" data-portfolio="0"><span>01 / Active demo</span><strong>Scatter</strong></button></li>
           <li><button class="portfolio-tab" id="portfolio-tab-kikan" type="button" role="tab" aria-selected="false" aria-controls="portfolio-panel-kikan" tabindex="-1" data-portfolio="1"><span>02 / Working prototype</span><strong>Kikan</strong></button></li>
-          <li><button class="portfolio-tab" id="portfolio-tab-viewer" type="button" role="tab" aria-selected="false" aria-controls="portfolio-panel-viewer" tabindex="-1" data-portfolio="2"><span>03 / Prototype direction</span><strong>Radiology Viewer</strong></button></li>
+
         </ul>
         <div class="progress-track" id="portfolio-progress" role="progressbar" aria-label="Time until next product" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <div class="progress-bar"></div>
@@ -2086,9 +2086,9 @@
                   </figcaption>
                 </figure>
                 <figure class="kikan-shot" id="kikan-shot-earlier" role="tabpanel" aria-labelledby="kikan-shot-tab-earlier" hidden>
-                  <img src="assets/images/kikan-earlier-dashboard.png" alt="Earlier Kikan-branded dashboard iteration showing an action centre, activity feed, and Kanban workflow" width="1858" height="995">
+                  <img src="assets/images/kikan-earlier-dashboard.png" alt="AITT dashboard iteration showing an action centre, activity feed, and Kanban workflow" width="1858" height="995">
                   <figcaption>
-                    <span>Earlier view / 03</span>
+                    <span>AITT dashboard / 03</span>
                     <div><strong>Product evolution is part of the evidence.</strong><p>An earlier AITT-branded dashboard iteration shows the same operating model becoming more focused and coherent.</p></div>
                   </figcaption>
                 </figure>
@@ -2096,28 +2096,13 @@
               <div class="kikan-gallery-tabs" role="tablist" aria-label="Kikan interface evidence">
                 <button class="kikan-gallery-tab" id="kikan-shot-tab-home" type="button" role="tab" aria-selected="true" aria-controls="kikan-shot-home" data-kikan-shot="0">Home</button>
                 <button class="kikan-gallery-tab" id="kikan-shot-tab-workstation" type="button" role="tab" aria-selected="false" aria-controls="kikan-shot-workstation" data-kikan-shot="1">Workstation</button>
-                <button class="kikan-gallery-tab" id="kikan-shot-tab-earlier" type="button" role="tab" aria-selected="false" aria-controls="kikan-shot-earlier" data-kikan-shot="2">Earlier view</button>
+                <button class="kikan-gallery-tab" id="kikan-shot-tab-earlier" type="button" role="tab" aria-selected="false" aria-controls="kikan-shot-earlier" data-kikan-shot="2">AITT dashboard</button>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="portfolio-panel" id="portfolio-panel-viewer" role="tabpanel" tabindex="0" aria-labelledby="portfolio-tab-viewer" hidden>
-          <div class="prototype-layout">
-            <div class="prototype-copy">
-              <span class="meta">Clinical product interface</span>
-              <h3>Radiology Viewer</h3>
-              <p>A reserved visual direction for presenting a high-trust, data-dense product surface without exposing patient data, client workflows, or a historical interface.</p>
-              <span class="prototype-label">Prototype direction / no patient data</span>
-            </div>
-            <div class="viewer-preview" role="img" aria-label="Neutral multi-panel radiology viewer schematic containing no patient data">
-              <div class="viewer-toolbar"><span>Viewer schematic</span><span>Sanitized / conceptual</span></div>
-              <div class="viewer-series"><span>Series</span><div class="series-item"></div><div class="series-item"></div><div class="series-item"></div></div>
-              <div class="viewer-canvas"><div class="scan-pane"></div><div class="scan-pane"></div><div class="scan-pane"></div><div class="scan-pane"></div></div>
-              <div class="viewer-findings"><span>Review</span><div class="finding-line"></div><div class="finding-line short"></div><div class="finding-line"></div><div class="finding-line short"></div></div>
-            </div>
-          </div>
-        </section>
+
       </div>
     </section>
 
