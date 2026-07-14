@@ -2,8 +2,8 @@
 
 A static personal portfolio for Justin Chong, a technical lead and product engineer working across backend platforms, AI/data systems, product delivery, and regulated production operations.
 
-**Repository:** <https://github.com/justincqz/portfolio>
-**Expected Pages URL:** <https://justincqz.github.io/portfolio/>
+**Live site:** <https://justincqz.com/>
+**GitHub Pages source:** <https://justincqz.github.io/portfolio/>
 
 ## What is included
 
